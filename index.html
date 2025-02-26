@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    
+    <title>Golden Eagle Forecast</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/pulse/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="d-flex justify-content-center align-items-center">
+        <form class="card rounded border-dark col-lg-8 col-md-10 col-12 mt-5" id="frmWeather">
+            <div class="card-body">
+                <h1 class="text-center mb-0 text-primary">Golden Eagle Forecast</h1>
+                <hr />
+                <img class="rounded mx-auto d-block" src="https://cdn4.iconfinder.com/data/icons/navigation-98/512/23_Location_map_pin_mark_navigation-512.png" alt="Location Icon" style="max-width: 10%;">
+                <h2 class="text-center">Cookeville, TN</h2>
+                <hr />
+                <div class="d-flex justify-content-center mb-2">
+                    <img id="imgWeatherIcon" src="https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_2-1024.png" alt="Temperature Icon" style="max-width: 15%;">
+                    <div class="align-self-center ml-3">
+                        <h3 id="strWeatherValue"></h3>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center mb-0">
+                    <img src="https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_43-1024.png" alt="Temperature Icon" style="max-width: 15%;">
+                    <div class="align-self-center ml-3">
+                        <h3 id="strTempValue"></h3>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center mb-2">
+                    <div class="align-self-center ml-3">
+                        <h5 id="strAppTempValue"></h5>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center mb-2">
+                    <img src="https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_44-1024.png" alt="Temperature Icon" style="max-width: 15%;">
+                    <div class="align-self-center ml-3">
+                        <h3 id="strHumValue"></h3>
+                    </div>
+                </div>
+                <hr />
+                    <table class="table align-middle">
+                        <thead>
+                            <h3 class="text-center">7-Day Forecast</h3>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="col">Day:</th>
+                                <th id="thDay1" scope="col"></th>
+                                <th id="thDay2" scope="col"></th>
+                                <th id="thDay3" scope="col"></th>
+                                <th id="thDay4" scope="col"></th>
+                                <th id="thDay5" scope="col"></th>
+                                <th id="thDay6" scope="col"></th>
+                                <th id="thDay7" scope="col"></th>
+                            </tr>
+                            <tr>
+                                <th scope="row">Weather:</th>
+                                <td id="thWeather1" scope="row"><img id="imgDailyWeatherIcon1" src="https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_2-1024.png" alt="Temperature Icon" style="max-width: 75%;"></td>
+                                <td id="thWeather2" scope="row"><img id="imgDailyWeatherIcon2" src="https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_2-1024.png" alt="Temperature Icon" style="max-width: 75%;"></td>
+                                <td id="thWeather3" scope="row"><img id="imgDailyWeatherIcon3" src="https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_2-1024.png" alt="Temperature Icon" style="max-width: 75%;"></td>
+                                <td id="thWeather4" scope="row"><img id="imgDailyWeatherIcon4" src="https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_2-1024.png" alt="Temperature Icon" style="max-width: 75%;"></td>
+                                <td id="thWeather5" scope="row"><img id="imgDailyWeatherIcon5" src="https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_2-1024.png" alt="Temperature Icon" style="max-width: 75%;"></td>
+                                <td id="thWeather6" scope="row"><img id="imgDailyWeatherIcon6" src="https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_2-1024.png" alt="Temperature Icon" style="max-width: 75%;"></td>
+                                <td id="thWeather7" scope="row"><img id="imgDailyWeatherIcon7" src="https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_2-1024.png" alt="Temperature Icon" style="max-width: 75%;"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Max Temp:</th>
+                                <td id="thMaxTemp1" scope="col"></td>
+                                <td id="thMaxTemp2" scope="col"></td>
+                                <td id="thMaxTemp3" scope="col"></td>
+                                <td id="thMaxTemp4" scope="col"></td>
+                                <td id="thMaxTemp5" scope="col"></td>
+                                <td id="thMaxTemp6" scope="col"></td>
+                                <td id="thMaxTemp7" scope="col"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Min Temp:</th>
+                                <td id="thMinTemp1" scope="col"></td>
+                                <td id="thMinTemp2" scope="col"></td>
+                                <td id="thMinTemp3" scope="col"></td>
+                                <td id="thMinTemp4" scope="col"></td>
+                                <td id="thMinTemp5" scope="col"></td>
+                                <td id="thMinTemp6" scope="col"></td>
+                                <td id="thMinTemp7" scope="col"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Precipitation:</th>
+                                <td id="thPrec1" scope="col"></td>
+                                <td id="thPrec2" scope="col"></td>
+                                <td id="thPrec3" scope="col"></td>
+                                <td id="thPrec4" scope="col"></td>
+                                <td id="thPrec5" scope="col"></td>
+                                <td id="thPrec6" scope="col"></td>
+                                <td id="thPrec7" scope="col"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                <hr />
+                <footer>Weather API from open-metro.com</footer>
+            </div>
+        </form>
+    </div>   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        fetch('https://api.open-meteo.com/v1/forecast?latitude=36.1628&longitude=-85.5016&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch&timezone=America%2FChicago')
+        .then(objResponse => objResponse.json())
+        .then(objData => {
+            let strCurrentDescription = ""
+            let strCurrentImage = ""
+            let strDailyDescription = ""
+            let strDailyImage = ""
+            
+            // This is completely stupid. Idk where to find the API for WMO Weather codes.
+            if (objData.current.weather_code = 0) {
+                strCurrentDescription = "Clear Sky"
+                strCurrentImage = "https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_3-1024.png"
+            } else if (objData.current.weather_code = 1) {
+                strCurrentDescription = "Mainly Clear"
+                strCurrentImage = "https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_49-1024.png"
+            } else if (objData.current.weather_code = 2) {
+                strCurrentDescription = "Partly Cloudy"
+                strCurrentImage = "https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_2-1024.png"
+            } else if (objData.current.weather_code = 3) {
+                strCurrentDescription = "Overcast"
+                strCurrentImage = "https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_1-1024.png"
+            } else if (objData.current.weather_code = 45) {
+                strCurrentDescription = "Fog"
+                strCurrentImage = "https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_30-1024.png"
+            } else if (objData.current.weather_code = 48) {
+                strCurrentDescription = "Fog Depositing Rime"
+                strCurrentImage = "https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_30-1024.png"
+            } else if (objData.current.weather_code = 51) {
+                strCurrentDescription = "Light Drizzle"
+                strCurrentImage = "https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_6-1024.png"
+            } else if (objData.current.weather_code = 53) {
+                strCurrentDescription = "Moderate Drizzle"
+                strCurrentImage = "https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_6-1024.png"
+            } else if (objData.current.weather_code = 55) {
+                strCurrentDescription = "Dense Drizzle"
+                strCurrentImage = "https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_6-1024.png"
+            } else if (objData.current.weather_code = 56) {
+                strCurrentDescription = "Light Freezing Drizzle"
+                strCurrentImage = "https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_6-1024.png"
+            } else if (objData.current.weather_code = 57) {
+                strCurrentDescription = "Dense Freezing Drizzle"
+                strCurrentImage = "https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_6-1024.png"
+            } else if (objData.current.weather_code = 61) {
+                strCurrentDescription = "Light Rain"
+                strCurrentImage = "https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_16-1024.png"
+            } else if (objData.current.weather_code = 63) {
+                strCurrentDescription = "Moderte Rain"
+                strCurrentImage = "https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_16-1024.png"
+            } else if (objData.current.weather_code = 65) {
+                strCurrentDescription = "Heavy Rain"
+                strCurrentImage = "https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_16-1024.png"
+            } else if (objData.current.weather_code = 66) {
+                strCurrentDescription = "Light Freezing Rain"
+                strCurrentImage = "https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_16-1024.png"
+            } else if (objData.current.weather_code = 67) {
+                strCurrentDescription = "Heavy Freezing Rain"
+                strCurrentImage = "https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_16-1024.png"
+            } else if (objData.current.weather_code = 71) {
+                strCurrentDescription = "Light Snow Fall"
+                strCurrentImage = "https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_35-1024.png"
+            } else if (objData.current.weather_code = 73) {
+                strCurrentDescription = "Moderate Snow Fall"
+                strCurrentImage = "https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_35-1024.png"
+            } else if (objData.current.weather_code = 75) {
+                strCurrentDescription = "Heavy Snow Fall"
+                strCurrentImage = "https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_35-1024.png"
+            } else if (objData.current.weather_code = 77) {
+                strCurrentDescription = "Snow Grains"
+                strCurrentImage = "https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_35-1024.png"
+            } else if (objData.current.weather_code = 80) {
+                strCurrentDescription = "Light Rain Showers"
+                strCurrentImage = "https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_16-1024.png"
+            } else if (objData.current.weather_code = 81) {
+                strCurrentDescription = "Moderate Rain Showers"
+                strCurrentImage = "https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_16-1024.png"
+            } else if (objData.current.weather_code = 82) {
+                strCurrentDescription = "Violent Rain Showers"
+                strCurrentImage = "https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_16-1024.png"
+            } else if (objData.current.weather_code = 85) {
+                strCurrentDescription = "Light Snow Showers"
+                strCurrentImage = "https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_35-1024.png"
+            } else if (objData.current.weather_code = 86) {
+                strCurrentDescription = "Heavy Snow Showers"
+                strCurrentImage = "https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_35-1024.png"
+            } else if (objData.current.weather_code = 95) {
+                strCurrentDescription = "Thunderstorm"
+                strCurrentImage = "https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_23-1024.png"
+            } else if (objData.current.weather_code = 96) {
+                strCurrentDescription = "Thunderstorm with Slight Hail"
+                strCurrentImage = "https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_23-1024.png"
+            } else if (objData.current.weather_code = 99) {
+                strCurrentDescription = "Thunderstorm with Heavy Hail"
+                strCurrentImage = "https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_23-1024.png"
+            } else {
+                strCurrentDescription = "Unknown Weather Code"
+                strCurrentImage = "https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_2-1024.png"
+            }
+            
+            // Here we go again, but for daily weather icons.
+            function dailyIconGet(intWeatherCode) {
+                if (intWeatherCode == 0) {
+                strDailyDescription = "Clear Sky"
+                strDailyImage = "https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_3-1024.png"
+                } else if (intWeatherCode == 1) {
+                    strDailyDescription = "Mainly Clear"
+                    strDailyImage = "https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_49-1024.png"
+                } else if (intWeatherCode == 2) {
+                    strDailyDescription = "Partly Cloudy"
+                    strDailyImage = "https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_2-1024.png"
+                } else if (intWeatherCode == 3) {
+                    strDailyDescription = "Overcast"
+                    strDailyImage = "https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_1-1024.png"
+                } else if (intWeatherCode == 45) {
+                    strDailyDescription = "Fog"
+                    strDailyImage = "https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_30-1024.png"
+                } else if (intWeatherCode == 48) {
+                    strDailyDescription = "Fog Depositing Rime"
+                    strDailyImage = "https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_30-1024.png"
+                } else if (intWeatherCode == 51) {
+                    strDailyDescription = "Light Drizzle"
+                    strDailyImage = "https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_6-1024.png"
+                } else if (intWeatherCode == 53) {
+                    strDailyDescription = "Moderate Drizzle"
+                    strDailyImage = "https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_6-1024.png"
+                } else if (intWeatherCode == 55) {
+                    strDailyDescription = "Dense Drizzle"
+                    strDailyImage = "https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_6-1024.png"
+                } else if (intWeatherCode == 56) {
+                    strDailyDescription = "Light Freezing Drizzle"
+                    strDailyImage = "https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_6-1024.png"
+                } else if (intWeatherCode == 57) {
+                    strDailyDescription = "Dense Freezing Drizzle"
+                    strDailyImage = "https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_6-1024.png"
+                } else if (intWeatherCode == 61) {
+                    strDailyDescription = "Light Rain"
+                    strDailyImage = "https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_16-1024.png"
+                } else if (intWeatherCode == 63) {
+                    strDailyDescription = "Moderte Rain"
+                    strDailyImage = "https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_16-1024.png"
+                } else if (intWeatherCode == 65) {
+                    strDailyDescription = "Heavy Rain"
+                    strDailyImage = "https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_16-1024.png"
+                } else if (intWeatherCode == 66) {
+                    strDailyDescription = "Light Freezing Rain"
+                    strDailyImage = "https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_16-1024.png"
+                } else if (intWeatherCode == 67) {
+                    strDailyDescription = "Heavy Freezing Rain"
+                    strDailyImage = "https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_16-1024.png"
+                } else if (intWeatherCode == 71) {
+                    strDailyDescription = "Light Snow Fall"
+                    strDailyImage = "https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_35-1024.png"
+                } else if (intWeatherCode == 73) {
+                    strDailyDescription = "Moderate Snow Fall"
+                    strDailyImage = "https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_35-1024.png"
+                } else if (intWeatherCode == 75) {
+                    strDailyDescription = "Heavy Snow Fall"
+                    strDailyImage = "https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_35-1024.png"
+                } else if (intWeatherCode == 77) {
+                    strDailyDescription = "Snow Grains"
+                    strDailyImage = "https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_35-1024.png"
+                } else if (intWeatherCode == 80) {
+                    strDailyDescription = "Light Rain Showers"
+                    strDailyImage = "https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_16-1024.png"
+                } else if (intWeatherCode == 81) {
+                    strDailyDescription = "Moderate Rain Showers"
+                    strDailyImage = "https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_16-1024.png"
+                } else if (intWeatherCode == 82) {
+                    strDailyDescription = "Violent Rain Showers"
+                    strDailyImage = "https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_16-1024.png"
+                } else if (intWeatherCode == 85) {
+                    strDailyDescription = "Light Snow Showers"
+                    strDailyImage = "https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_35-1024.png"
+                } else if (intWeatherCode == 86) {
+                    strDailyDescription = "Heavy Snow Showers"
+                    strDailyImage = "https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_35-1024.png"
+                } else if (intWeatherCode == 95) {
+                    strDailyDescription = "Thunderstorm"
+                    strDailyImage = "https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_23-1024.png"
+                } else if (intWeatherCode == 96) {
+                    strDailyDescription = "Thunderstorm with Slight Hail"
+                    strDailyImage = "https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_23-1024.png"
+                } else if (intWeatherCode == 99) {
+                    strDailyDescription = "Thunderstorm with Heavy Hail"
+                    strDailyImage = "https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_23-1024.png"
+                } else {
+                    strDailyDescription = "Unknown Weather Code"
+                    strDailyImage = "https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_2-1024.png"
+                }
+            }
+            
+            document.querySelector('#strTempValue').innerHTML = objData.current.temperature_2m + "°F"
+            document.querySelector('#strAppTempValue').innerHTML = "Feels like " + objData.current.apparent_temperature + "°F";
+            document.querySelector('#strHumValue').innerHTML = objData.current.relative_humidity_2m + "%"
+            document.querySelector('#strWeatherValue').innerHTML = strCurrentDescription;
+            document.querySelector('#imgWeatherIcon').src = strCurrentImage
+            document.querySelector('#imgWeatherIcon').alt = strCurrentDescription
+
+            document.querySelector('#thDay1').innerHTML = objData.daily.time[0]
+            document.querySelector('#thDay2').innerHTML = objData.daily.time[1]
+            document.querySelector('#thDay3').innerHTML = objData.daily.time[2]
+            document.querySelector('#thDay4').innerHTML = objData.daily.time[3]
+            document.querySelector('#thDay5').innerHTML = objData.daily.time[4]
+            document.querySelector('#thDay6').innerHTML = objData.daily.time[5]
+            document.querySelector('#thDay7').innerHTML = objData.daily.time[6]
+
+            dailyIconGet(objData.daily.weather_code[0])
+            document.querySelector('#imgDailyWeatherIcon1').src = strDailyImage
+            document.querySelector('#imgDailyWeatherIcon1').alt = strDailyDescription
+            dailyIconGet(objData.daily.weather_code[1])
+            document.querySelector('#imgDailyWeatherIcon2').src = strDailyImage
+            document.querySelector('#imgDailyWeatherIcon2').alt = strDailyDescription
+            dailyIconGet(objData.daily.weather_code[2])
+            document.querySelector('#imgDailyWeatherIcon3').src = strDailyImage
+            document.querySelector('#imgDailyWeatherIcon3').alt = strDailyDescription
+            dailyIconGet(objData.daily.weather_code[3])
+            document.querySelector('#imgDailyWeatherIcon4').src = strDailyImage
+            document.querySelector('#imgDailyWeatherIcon4').alt = strCurrentDescription
+            dailyIconGet(objData.daily.weather_code[4])
+            document.querySelector('#imgDailyWeatherIcon5').src = strDailyImage
+            document.querySelector('#imgDailyWeatherIcon5').alt = strDailyDescription
+            dailyIconGet(objData.daily.weather_code[5])
+            document.querySelector('#imgDailyWeatherIcon6').src = strDailyImage
+            document.querySelector('#imgDailyWeatherIcon6').alt = strDailyDescription
+            dailyIconGet(objData.daily.weather_code[6])
+            document.querySelector('#imgDailyWeatherIcon7').src = strDailyImage
+            document.querySelector('#imgDailyWeatherIcon7').alt = strDailyDescription
+
+            document.querySelector('#thMaxTemp1').innerHTML = objData.daily.temperature_2m_max[0] + "°F"
+            document.querySelector('#thMaxTemp2').innerHTML = objData.daily.temperature_2m_max[1] + "°F"
+            document.querySelector('#thMaxTemp3').innerHTML = objData.daily.temperature_2m_max[2] + "°F"
+            document.querySelector('#thMaxTemp4').innerHTML = objData.daily.temperature_2m_max[3] + "°F"
+            document.querySelector('#thMaxTemp5').innerHTML = objData.daily.temperature_2m_max[4] + "°F"
+            document.querySelector('#thMaxTemp6').innerHTML = objData.daily.temperature_2m_max[5] + "°F"
+            document.querySelector('#thMaxTemp7').innerHTML = objData.daily.temperature_2m_max[6] + "°F"
+
+            document.querySelector('#thMinTemp1').innerHTML = objData.daily.temperature_2m_min[0] + "°F"
+            document.querySelector('#thMinTemp2').innerHTML = objData.daily.temperature_2m_min[1] + "°F"
+            document.querySelector('#thMinTemp3').innerHTML = objData.daily.temperature_2m_min[2] + "°F"
+            document.querySelector('#thMinTemp4').innerHTML = objData.daily.temperature_2m_min[3] + "°F"
+            document.querySelector('#thMinTemp5').innerHTML = objData.daily.temperature_2m_min[4] + "°F"
+            document.querySelector('#thMinTemp6').innerHTML = objData.daily.temperature_2m_min[5] + "°F"
+            document.querySelector('#thMinTemp7').innerHTML = objData.daily.temperature_2m_min[6] + "°F"
+
+            document.querySelector('#thPrec1').innerHTML = objData.daily.precipitation_sum[0]
+            document.querySelector('#thPrec2').innerHTML = objData.daily.precipitation_sum[1]
+            document.querySelector('#thPrec3').innerHTML = objData.daily.precipitation_sum[2]
+            document.querySelector('#thPrec4').innerHTML = objData.daily.precipitation_sum[3]
+            document.querySelector('#thPrec5').innerHTML = objData.daily.precipitation_sum[4]
+            document.querySelector('#thPrec6').innerHTML = objData.daily.precipitation_sum[5]
+            document.querySelector('#thPrec7').innerHTML = objData.daily.precipitation_sum[6]
+        })
+    </script>
+</body>
+<style>
+    h1 {
+    font-family: "Lora", serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    }
+
+    h2 {
+        color: #E74C3C;
+        font-style: bold;
+    }
+
+    body {
+        display: grid;
+        place-items: center;
+        width: 100%;
+        background-color: #5D3E7C;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23ffd100' fill-opacity='0.5' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+    }
+
+    /* .card {
+        display: grid;
+        place-items: center;
+        width: 100%;
+    } */
+
+    table {
+        display: grid;
+        place-items: center;
+        width: 100%;
+    }
+</style>
+</html>
