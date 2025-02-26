@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    
+
     <title>Golden Eagle Forecast</title>
     <link rel="icon" type="image/jpg" href="https://github.com/KyleLDavis/WeatherApp/blob/main/icon.jpg?raw=true">
     <link rel="apple-touch-icon" href="https://github.com/KyleLDavis/WeatherApp/blob/main/icon.jpg?raw=true">
@@ -13,7 +13,7 @@
     <link rel="apple-touch-icon" sizes="114x114" href="https://github.com/KyleLDavis/WeatherApp/blob/main/icon.jpg?raw=true">
     <link rel="apple-touch-icon" sizes="144x144" href="https://github.com/KyleLDavis/WeatherApp/blob/main/icon.jpg?raw=true">
     <link rel="mask-icon" href="https://github.com/KyleLDavis/WeatherApp/blob/main/icon.jpg?raw=true">
-    
+
     <link href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/pulse/bootstrap.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -120,11 +120,13 @@
         fetch('https://api.open-meteo.com/v1/forecast?latitude=36.1628&longitude=-85.5016&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch&timezone=America%2FChicago')
         .then(objResponse => objResponse.json())
         .then(objData => {
+            // Declares strings to store Current/Daily Weather information in.
             let strCurrentDescription = ""
             let strCurrentImage = ""
             let strDailyDescription = ""
             let strDailyImage = ""
             
+            // Gets the current weather description and icon from the weather code.
             // This is completely stupid. Idk where to find the API for WMO Weather codes.
             if (objData.current.weather_code = 0) {
                 strCurrentDescription = "Clear Sky"
@@ -216,6 +218,8 @@
             }
             
             // Here we go again, but for daily weather icons.
+            // Function to get the daily weather description and icon from the weather code.
+            // Parameter: Weather code for the day.
             function dailyIconGet(intWeatherCode) {
                 if (intWeatherCode == 0) {
                 strDailyDescription = "Clear Sky"
@@ -314,6 +318,7 @@
             document.querySelector('#imgWeatherIcon').src = strCurrentImage
             document.querySelector('#imgWeatherIcon').alt = strCurrentDescription
 
+            // Appends the current and next 6 dates to the table.
             document.querySelector('#thDay1').innerHTML = objData.daily.time[0]
             document.querySelector('#thDay2').innerHTML = objData.daily.time[1]
             document.querySelector('#thDay3').innerHTML = objData.daily.time[2]
@@ -322,6 +327,7 @@
             document.querySelector('#thDay6').innerHTML = objData.daily.time[5]
             document.querySelector('#thDay7').innerHTML = objData.daily.time[6]
 
+            // Updates the daily weather icons to the appropriate icon.
             dailyIconGet(objData.daily.weather_code[0])
             document.querySelector('#imgDailyWeatherIcon1').src = strDailyImage
             document.querySelector('#imgDailyWeatherIcon1').alt = strDailyDescription
@@ -344,6 +350,7 @@
             document.querySelector('#imgDailyWeatherIcon7').src = strDailyImage
             document.querySelector('#imgDailyWeatherIcon7').alt = strDailyDescription
 
+            // Appends the maximum temperature to each date.
             document.querySelector('#thMaxTemp1').innerHTML = objData.daily.temperature_2m_max[0] + "°F"
             document.querySelector('#thMaxTemp2').innerHTML = objData.daily.temperature_2m_max[1] + "°F"
             document.querySelector('#thMaxTemp3').innerHTML = objData.daily.temperature_2m_max[2] + "°F"
@@ -352,6 +359,7 @@
             document.querySelector('#thMaxTemp6').innerHTML = objData.daily.temperature_2m_max[5] + "°F"
             document.querySelector('#thMaxTemp7').innerHTML = objData.daily.temperature_2m_max[6] + "°F"
 
+            // Appends the minimum temperature to each date.
             document.querySelector('#thMinTemp1').innerHTML = objData.daily.temperature_2m_min[0] + "°F"
             document.querySelector('#thMinTemp2').innerHTML = objData.daily.temperature_2m_min[1] + "°F"
             document.querySelector('#thMinTemp3').innerHTML = objData.daily.temperature_2m_min[2] + "°F"
@@ -360,6 +368,7 @@
             document.querySelector('#thMinTemp6').innerHTML = objData.daily.temperature_2m_min[5] + "°F"
             document.querySelector('#thMinTemp7').innerHTML = objData.daily.temperature_2m_min[6] + "°F"
 
+            // Appends the precipitation sum to each date.
             document.querySelector('#thPrec1').innerHTML = objData.daily.precipitation_sum[0]
             document.querySelector('#thPrec2').innerHTML = objData.daily.precipitation_sum[1]
             document.querySelector('#thPrec3').innerHTML = objData.daily.precipitation_sum[2]
